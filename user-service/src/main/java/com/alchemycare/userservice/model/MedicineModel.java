@@ -33,6 +33,7 @@ public class MedicineModel {
 
     @Enumerated(EnumType.STRING)
     private FrequencyType frequencyType;
+
     private Integer frequencyInterval;
 
     private LocalDateTime nextDose;
