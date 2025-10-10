@@ -1,0 +1,73 @@
+:root {
+  font-family: Verdana;
+}
+
+p
+{
+  color:red;
+  font-weight:bold;
+}
+
+h1
+{
+  color:red;
+  padding-left: 32px;
+}
+
+hr
+{
+  display: block;
+  height: 1px;
+  border-top: 1px solid black;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.sidenav {
+  outline: 1px solid black;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 8px;
+}
+
+button {
+  background-color: pink;
+  border-radius: 12px;
+  border: 2px solid red;
+  color: red;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
