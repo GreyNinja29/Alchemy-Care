@@ -7,6 +7,8 @@ spring:
 
 
 
+
+
   datasource:
     username: ${db_username}
     password: ${db_password}
@@ -43,3 +45,12 @@ spring:
 
 jwt:
   key: ${jwt_key}
+
+
+kafka:
+  topic:
+    medicine-events: medicine-events
+
+
+
+
