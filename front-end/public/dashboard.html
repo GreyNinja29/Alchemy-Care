@@ -19,16 +19,42 @@
     
     <!-- Side navigation -->
     <div class="sidenav">
-      <a href="#">Medicines</a>
-      <a href="#">Schedule</a>
-      <a href="#">Account</a>
+      <a href="javascript:void(0)" onclick="showContent('Medicines')">Medicines</a>
+      <a href="javascript:void(0)" onclick="showContent('Schedule')">Schedule</a>
+      <a href="javascript:void(0)" onclick="showContent('Account')">Account</a>
     </div>
 
     <!-- Page content -->
     <h1 style = "padding-left: 170px;">Alchemy Care</h1>
     <div class="main">
-      
-      <button id="logoutBtn">Logout</button>
+      <div class = "meds">
+        <h2>Medicines</h2>
+
+        <!-- Form to Add Medicine -->
+        <form id="addMedicineForm">
+          <input type="text" name="medicineName" placeholder="Medicine Name" required />
+          <input type="text" name="dosage" placeholder="Dosage" required />
+          <input type="text" name="description" placeholder="Description" />
+          <input type="datetime-local" name="startTime" required />
+          <input type="datetime-local" name="endTime" required />
+          <select name="frequencyType" required>
+            <option value="HOURS">Hours</option>
+            <option value="DAYS">Days</option>
+          </select>
+          <input type="number" name="frequencyInterval" placeholder="Frequency Interval" required />
+
+          <button type="submit">Add Medicine</button>
+        </form>
+
+        <hr />
+
+        <!-- Medicine List -->
+        <h3>Medicine List</h3>
+        <ul id="medicineList"></ul>
+      </div>
+      <div class = "acct">
+        <button id="logoutBtn">Logout</button>
+      </div>
     </div> 
   </div>
 
