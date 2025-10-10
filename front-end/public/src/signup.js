@@ -8,7 +8,7 @@ document.querySelector('#signupForm').addEventListener('submit', async (e) => {
   const password = document.querySelector('#password').value;
 
   try {
-    const res = await fetch(`${baseUrl}/signup`, {
+    const res = await fetch(`${baseUrl}/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userName, email, password })

@@ -1,4 +1,5 @@
-package com.alchemycare.userservice.events;
+package com.alchemycare.notificationservice.events;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,3 +28,4 @@ public class MedicineEvent {
 
 
 }
+

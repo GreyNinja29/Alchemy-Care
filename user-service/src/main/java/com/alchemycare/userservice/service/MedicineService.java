@@ -71,6 +71,7 @@ public class MedicineService {
                 .medicineId(saved.getMedicineId())
                 .medicineName(saved.getMedicineName())
                 .nextDose(saved.getNextDose())
+                .endTime(saved.getEndTime())
                 .frequencyType(saved.getFrequencyType().toString())
                 .frequencyInterval(saved.getFrequencyInterval())
                 .eventType(EventType.SCHEDULED.toString())
@@ -78,17 +79,17 @@ public class MedicineService {
                 .build();
 
 
-      CompletableFuture.runAsync(() -> {
-          try {
-              kafkaTemplate.send(medicineTopic,event).get(5, TimeUnit.MILLISECONDS);
-              System.out.println("Message sent successfully");
-          }
-          catch (Exception ex) {
-              System.out.println("Message failed to send :" + ex.getMessage());
-          }
-      });
+//      CompletableFuture.runAsync(() -> {
+//          try {
+//              kafkaTemplate.send(medicineTopic,event).get(5, TimeUnit.MILLISECONDS);
+//              System.out.println("Message sent successfully");
+//          }
+//          catch (Exception ex) {
+//              System.out.println("Message failed to send :" + ex.getMessage());
+//          }
+//      });
 
-//        kafkaTemplate.send(medicineTopic,event);
+        kafkaTemplate.send(medicineTopic,event);
 
 
 
@@ -126,17 +127,9 @@ public class MedicineService {
                 .build();
 
 
-        CompletableFuture.runAsync(() -> {
-            try {
-                kafkaTemplate.send(medicineTopic,event).get(5, TimeUnit.MILLISECONDS);
-                System.out.println("Message sent successfully");
-            }
-            catch (Exception ex) {
-                System.out.println("Message failed to send :" + ex.getMessage());
-            }
-        });
 
-//        kafkaTemplate.send(medicineTopic,event);
+
+        kafkaTemplate.send(medicineTopic,event);
 
         // RETURNING RESPONSE
 

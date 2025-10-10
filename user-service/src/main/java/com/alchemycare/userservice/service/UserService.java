@@ -69,6 +69,7 @@ public class UserService {
                 .upcomingMedicines(upcomingMedicines)
                 .build();
 
+
         return new ResponseEntity<>(dashboard,HttpStatus.OK);
 
 
@@ -90,6 +91,20 @@ public class UserService {
                 .build();
 
         return resp;
+
+    }
+
+    private LocalDateTime calculateNextDose(LocalDateTime current, String frequencyType, Integer frequencyInterval) {
+
+        return switch (frequencyType) {
+            case "HOURLY"-> current.plusHours(frequencyInterval);
+            case "DAILY"-> current.plusDays(frequencyInterval);
+            case "WEEKLY"->current.plusWeeks(frequencyInterval);
+            case "MONTHLY"-> current.plusMonths(frequencyInterval);
+            default -> LocalDateTime.now();
+
+        };
+
 
     }
 }

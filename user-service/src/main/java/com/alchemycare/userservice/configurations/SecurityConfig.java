@@ -29,11 +29,11 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
-                    req -> req
-                            .requestMatchers("/auth/**","/oauth2/**").permitAll()
-                            .anyRequest().authenticated())
+                        req -> req
+                                .requestMatchers("/auth/**", "/oauth2/**").permitAll()
+                                .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).cors();
 
         return http.build();
     }

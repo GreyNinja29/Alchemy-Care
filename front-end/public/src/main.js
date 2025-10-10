@@ -1,4 +1,3 @@
-import './style.css'
 
 const baseUrl = 'http://localhost:8080';
 
@@ -11,7 +10,7 @@ loginForm.addEventListener('submit', async (e) => {
   const password = document.querySelector('#password').value;
 
   try {
-    const res = await fetch(`${baseUrl}/login`, {
+    const res = await fetch(`${baseUrl}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -23,7 +22,7 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     const data = await res.json();
-
+  
     localStorage.setItem('token', data.jwtToken);
     localStorage.setItem('userName', data.userName);
 
