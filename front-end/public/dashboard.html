@@ -3,11 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dashboard | Alchemy Care</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./src/style.css" />
 </head>
 <body>
-  <div id="app"></div>
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      print("no token detected");
+      window.location.href = "login.html";
+    }
+  </script>
 
-  <script type="module" src="dashboard.js"></script>
+  <div id="app">
+    
+    
+    <!-- Side navigation -->
+    <div class="sidenav">
+      <a href="#">Medicines</a>
+      <a href="#">Schedule</a>
+      <a href="#">Account</a>
+    </div>
+
+    <!-- Page content -->
+    <h1 style = "padding-left: 170px;">Alchemy Care</h1>
+    <div class="main">
+      
+      <button id="logoutBtn">Logout</button>
+    </div> 
+  </div>
+
+  <script type="module" src="./src/dashboard.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ loginForm.addEventListener('submit', async (e) => {
 
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
-
+  
   try {
     const res = await fetch(`${baseUrl}/login`, {
       method: 'POST',
@@ -32,4 +32,8 @@ loginForm.addEventListener('submit', async (e) => {
     console.error(err);
     alert('Something went wrong. Please check console');
   }
+
+  /*localStorage.setItem('token', 'fake.jwt.token'); //fake
+  localStorage.setItem('userName', 'Guest'); //fake
+  window.location.href = 'dashboard.html';  //fake*/
 });
