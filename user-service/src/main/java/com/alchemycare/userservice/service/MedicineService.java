@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -144,6 +147,31 @@ public class MedicineService {
 
 
 
+
+
+
+    public ResponseEntity<?> getAllMedicine(String userEmail) {
+        UserModel user=userRepo.findUserModelByEmail(userEmail);
+
+        if(user==null) {
+            return new ResponseEntity<>("User does not exist",HttpStatus.BAD_REQUEST);
+        }
+
+        List<MedicineModel> medicineModelList= Optional.ofNullable(user.getMedicine())
+                .orElse(Collections.emptyList());
+
+
+        List<MedicineResponseDTO> allMeds=medicineModelList.stream()
+                .map(this::makeMedResponse)
+                .toList();
+
+
+        return new ResponseEntity<>(allMeds,HttpStatus.OK);
+
+
+    }
+
+
     private  MedicineResponseDTO makeMedResponse(MedicineModel saved) {
 
         MedicineResponseDTO resp=MedicineResponseDTO.builder()
@@ -160,4 +188,6 @@ public class MedicineService {
         return resp;
 
     }
+
+
 }

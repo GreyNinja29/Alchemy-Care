@@ -32,6 +32,15 @@ public class MedicineController {
     }
 
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllMedicine(
+            @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
+    ) {
+
+        return medicineService.getAllMedicine(user.getUsername());
+    }
+
+
 
 
 
