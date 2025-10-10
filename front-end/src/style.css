@@ -50,3 +50,24 @@ hr
   transition: margin-left .5s;
   padding: 20px;
 }
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 8px;
+}
+
+button {
+  background-color: pink;
+  border-radius: 12px;
+  border: 2px solid red;
+  color: red;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}

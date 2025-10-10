@@ -1,6 +1,6 @@
 import './style.css'
 
-const baseUrl = 'https://your-backend-url.com'; // <-- change this
+const baseUrl = 'http://localhost:8080';
 
 const loginForm = document.querySelector('#loginForm');
 
@@ -24,14 +24,12 @@ loginForm.addEventListener('submit', async (e) => {
 
     const data = await res.json();
 
-    // Save JWT token and username
     localStorage.setItem('token', data.jwtToken);
     localStorage.setItem('userName', data.userName);
 
-    // Redirect to dashboard
     window.location.href = 'dashboard.html';
   } catch (err) {
     console.error(err);
-    alert('Something went wrong. Try again later.');
+    alert('Something went wrong. Please check console');
   }
 });

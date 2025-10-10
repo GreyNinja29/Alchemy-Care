@@ -1,4 +1,4 @@
-const baseUrl = 'https://your-backend-url.com';
+const baseUrl = 'http://localhost:8080';
 
 document.querySelector('#signupForm').addEventListener('submit', async (e) => {
   e.preventDefault();
