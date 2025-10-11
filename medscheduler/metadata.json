@@ -1,5 +1,0 @@
-{
-  "name": "MedScheduler",
-  "description": "A modern web application to help users schedule and track their medications. Users can sign up, log in, add new medicines with specific schedules, and view their medication dashboard.",
-  "requestFramePermissions": []
-}

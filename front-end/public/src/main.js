@@ -23,7 +23,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     const data = await res.json();
   
-    localStorage.setItem('token', data.jwtToken);
+    localStorage.setItem('jtoken', data.jwtToken);
     localStorage.setItem('userName', data.userName);
 
     window.location.href = 'dashboard.html';

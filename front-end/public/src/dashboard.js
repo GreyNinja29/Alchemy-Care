@@ -21,14 +21,15 @@ let state = {
 function checkAuth() {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('userName');
+  console.log('User from localStorage:', user);
   
   if (!token || !user) {
-    window.location.href = '/login.html'; // or wherever your login page is
+    window.location.href = '/public/login.html'; // or wherever your login page is
     return false;
   }
   
   state.token = token;
-  state.user = JSON.parse(user);
+  state.user = user;
   return true;
 }
 
@@ -205,7 +206,7 @@ function renderDashboard() {
       <header>
         <h1>Your Dashboard</h1>
         <div class="header-actions">
-          <span>Welcome, ${state.user.userName}</span>
+          <span>Welcome, ${state.user}</span>
           <button onclick="openAddMedicineModal()">Add Medicine</button>
           <button onclick="handleLogout()">Logout</button>
         </div>
