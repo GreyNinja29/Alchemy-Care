@@ -16,10 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -156,6 +153,7 @@ public class MedicineService {
 
         List<MedicineResponseDTO> allMeds=medicineModelList.stream()
                 .map(this::makeMedResponse)
+                .sorted(Comparator.comparing((MedicineResponseDTO::getNextDoseTime)))
                 .toList();
 
 

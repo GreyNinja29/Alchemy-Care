@@ -69,11 +69,22 @@ public class UserService {
                 .upcomingMedicines(upcomingMedicines)
                 .build();
 
+        allMedicines.forEach(
+                m-> {
+                    while(m.getNextDose().isBefore(LocalDateTime.now())) {
+                        m.setNextDose(calculateNextDose(m.getNextDose(),
+                                m.getFrequencyType().toString(),m.getFrequencyInterval()));
+                    }
 
+                }
 
+        );
+
+        user.setMedicine(allMedicines);
+
+        userRepo.save(user);
 
         return new ResponseEntity<>(dashboard,HttpStatus.OK);
-
 
 
     }

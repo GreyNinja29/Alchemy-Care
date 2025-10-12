@@ -20,17 +20,23 @@ public class MedicineScheduleService {
     @Autowired
     TaskScheduler taskScheduler;
 
+    @Autowired
+    EmailService emailService;
+
     private final ConcurrentHashMap<Long, ScheduledFuture<?>> scheduledTasks=new ConcurrentHashMap<>();
 
     public void scheduleNotification(MedicineEvent event) {
-        LocalDateTime nextDose=event.getNextDose();
-        long delay= Duration.between(LocalDateTime.now(),nextDose).toMillis();
 
-        if(delay<0) {
+        while(event.getNextDose().isBefore(LocalDateTime.now())) {
             System.out.println("Next dose time is in past , the missed medicine is :"+event.getMedicineName());
 
-            return;
+            event.setNextDose(calculateNextDose(event.getNextDose(), event.getFrequencyType(), event.getFrequencyInterval()));
+
+
+
         }
+
+        long delay=Duration.between(LocalDateTime.now(),event.getNextDose()).toMillis();
 
         ScheduledFuture<?> future=taskScheduler.schedule(() ->
                 sendRemainder(event),
@@ -47,6 +53,10 @@ public class MedicineScheduleService {
     public void sendRemainder(MedicineEvent event) {
         // send email
         System.out.println("Reminder: Time To take :"+event.getMedicineName());
+
+        emailService.sendMail(event.getUserEmail(),"Medicine Remainder","Time To Take: "+event.getMedicineName());
+
+
 
 
         LocalDateTime nextDose=calculateNextDose(event.getNextDose(),event.getFrequencyType(),event.getFrequencyInterval());

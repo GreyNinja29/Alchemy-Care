@@ -15,6 +15,8 @@ public class MedicineEventListener {
     @KafkaListener(topics = "medicine-events",groupId = "notification-group")
     public void listen(MedicineEvent event) {
 
+        System.out.println("Endtime of "+event.getMedicineName()+" is: "+event.getEndTime());
+
         decideEventOperation(event);
 
     }

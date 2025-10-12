@@ -249,7 +249,7 @@ function renderMedicineList() {
             '<tr>' +
               '<th>Name</th>' +
               '<th>Dosage</th>' +
-              '<th>Frequency</th>' +
+              '<th>Next Dose</th>' +
               '<th>End Date</th>' +
               '<th>Actions</th>' +
             '</tr>' +
@@ -262,7 +262,7 @@ function renderMedicineList() {
                   '<br><small>' + med.description + '</small>' +
                 '</td>' +
                 '<td>' + med.dosage + '</td>' +
-                '<td>' + formatFrequency(med.frequencyType, med.frequencyInterval) + '</td>' +
+                '<td>' + formatNextDose(med?.nextDoseTime ?? null) + '</td>' +
                 '<td>' + formatDate(med.endTime) + '</td>' +
                 '<td>' +
                   '<button onclick="handleDeleteMedicine(' + med.medicineId + ')">Delete</button>' +
