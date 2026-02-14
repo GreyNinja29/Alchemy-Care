@@ -2,6 +2,11 @@
 
 A Spring Boot microservices application that helps users schedule and receive reminders for their medicines. It leverages **Apache Kafka** for event-driven notifications and ensures users never miss a dose.
 
+### System Architecture
+
+![Architecture Diagram](./ArchitectureDiagram.png)
+*Figure 1: High-level architecture showing the request flow from the user to user Service and its interaction with database and notification service.*
+
 
 
 ---
